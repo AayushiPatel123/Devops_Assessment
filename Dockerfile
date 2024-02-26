@@ -2,13 +2,13 @@
 FROM python:3.9-slim
 
 # Set the working directory in the container
-WORKDIR /usr/src/
+WORKDIR /usr/src/app
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the current directory contents into the container at /usr/src
+# Copy the current directory contents into the container at /usr/src/app
 COPY . .
 
 # Create a non-root user and switch to it
