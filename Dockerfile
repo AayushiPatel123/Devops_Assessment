@@ -18,5 +18,8 @@ USER aayushi
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
+# Define the volume
+VOLUME /data
+
 # Run app.py when the container launches
 CMD ["python", "app.py"]
