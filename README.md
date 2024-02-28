@@ -40,11 +40,11 @@ The Dockerfile for this application is designed with a focus on security and eff
 ### Accessing the Application
 - On your local machine, pull the image from Docker Hub using the docker pull command.
   ```
-   docker pull aayushipatel/flaskapp:v0.1.4
+   docker pull aayushipatel/flaskapp:v0.2.2
   ```
 - After pulling the image, run it as a container. If your Flask app listens on port 5000, you can map it to a local port (e.g., 8000).
   ```
-    docker run -p 8000:5000 aayushipatel/flaskapp:v0.1.4
+    docker run -p 8000:5000 aayushipatel/flaskapp:v0.2.2
 
   ```
 - Open a web browser and navigate to ``` http://localhost:8000 ```. You should see your Flask application running.
@@ -56,13 +56,13 @@ The Dockerfile for this application is designed with a focus on security and eff
   ```
 - STEP-2: Modify the Docker Run Command
   ```
-    docker run -p 80:5000 -v ~/host_data:/data aayushipatel/flaskapp:v0.1.4
+    docker run -p 8000:5000 -v ~/host_data:/data aayushipatel/flaskapp:v0.2.2
   ```
 ### Deploying with Kubernetes
 - Configuring Persistent Storage: Apply the PersistentVolume and PersistentVolumeClaim manifests:
   ```
-  kubectl apply -f persistentvolume.yaml
-  kubectl apply -f persistentvolumeclaim.yaml
+  kubectl apply -f pv.yaml
+  kubectl apply -f pvc.yaml
   ```
 - Create a Deployment: Apply the **deployment.yaml** file to create a Kubernetes Deployment.
   ```
@@ -93,7 +93,7 @@ The Dockerfile for this application is designed with a focus on security and eff
   ```
   - Send a POST Request: Use a tool like curl or Postman to send a POST request to the /save-data endpoint.
   ```
-  curl -X POST http://YOUR_INGRESS_IP/save-data -H "Content-Type: application/json" -d '{"name": "aayushi"}'
+  curl -X POST http://localhost:8000/save-data -H "Content-Type: application/json" -d '{"name": "aayushi"}'
   ```
 ### Verifying Data Persistence
 After sending the POST request, the data is written to a file in the persistent volume. Follow these steps to verify that the data has been stored persistently:
