@@ -56,7 +56,7 @@ The Dockerfile for this application is designed with a focus on security and eff
   ```
 - STEP-2: Modify the Docker Run Command
   ```
-    docker run -p 8000:5000 -v ~/host_data:/data aayushipatel/flaskapp:v0.1.4
+    docker run -p 80:5000 -v ~/host_data:/data aayushipatel/flaskapp:v0.1.4
   ```
 ### Deploying with Kubernetes
 - Configuring Persistent Storage: Apply the PersistentVolume and PersistentVolumeClaim manifests:
